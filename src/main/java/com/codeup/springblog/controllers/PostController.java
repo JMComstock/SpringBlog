@@ -1,31 +1,30 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.services.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 @Controller
 public class PostController {
 
-    @RequestMapping(path="/posts", method= RequestMethod.GET)
-    @ResponseBody
-    public String postIndex(Model model) {
-        ArrayList<Post> allPosts = new ArrayList<>();
-        allPosts.add(new Post("title1", "description2"));
-        allPosts.add(new Post("title2", "description2"));
-        model.addAttribute("allPosts", allPosts);
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
+
+    @RequestMapping("/posts")
+    public String getPosts(Model model) {
+
+        model.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
 
     @RequestMapping(path="/posts/{id}", method= RequestMethod.GET)
-    @ResponseBody
-    public String post(@PathVariable int id, Model model) {
-        String title = "1st title";
-        String description = "1st description";
-        model.addAttribute("post", new Post(title, description));
+    public String post(@PathVariable Long id, Model model) {
+        model.addAttribute("posts", postDao.findAllById(id));
         return "posts/show";
     }
 
