@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <nav th:replace="partials/nav :: navbar"></nav>
+    <nav th:replace="partials/navbar :: navbar"></nav>
     <div class="container">
         <div class="dice">
             <h1>Guess a number</h1>
@@ -33,6 +33,7 @@
             <a href="/roll-dice/5"><button class="btn btn-dark btn-lg">5</button></a>
             <a href="/roll-dice/6"><button class="btn btn-dark btn-lg">6</button></a>
         </div>
+
         <hr>
 
         <div class="" th:if="${guessedNumber != null}">
@@ -47,6 +48,7 @@
             </div>
         </div>
     </div>
+    <footer th:replace="/partials/footer :: footer"></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
