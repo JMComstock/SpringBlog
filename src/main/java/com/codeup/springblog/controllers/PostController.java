@@ -12,6 +12,7 @@ public class PostController {
     private final PostRepository postDao;
 
     public PostController(PostRepository postDao) {
+
         this.postDao = postDao;
     }
 
@@ -29,17 +30,14 @@ public class PostController {
     }
 
     @RequestMapping(path="/posts/create", method = RequestMethod.GET)
-    @ResponseBody
     public String createPostForm() {
-
-        return "View the form for creating a post... ";
+        return "posts/create";
     }
 
     @RequestMapping(path="/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String createPostView() {
-
-        return "creates a new post";
+    public String createPostView(@RequestParam(name = "title") String title, @RequestParam(name = "description") String description) {
+        postDao.save(new Post(title, description));
+        return "redirect:/posts";
     }
 
 }

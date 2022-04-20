@@ -15,6 +15,19 @@ public class Post {
     @Column(nullable = false)
     private String description;
 
+    public Post () {}
+
+    public Post(long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+
+    public Post(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }
