@@ -30,13 +30,14 @@ public class PostController {
     }
 
     @RequestMapping(path="/posts/create", method = RequestMethod.GET)
-    public String createPostForm() {
+    public String createPostForm(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @RequestMapping(path="/posts/create", method = RequestMethod.POST)
-    public String createPostView(@RequestParam(name = "title") String title, @RequestParam(name = "description") String description) {
-        postDao.save(new Post(title, description));
+    public String createPostView(@ModelAttribute Post post) {
+        postDao.save(post);
         return "redirect:/posts";
     }
 

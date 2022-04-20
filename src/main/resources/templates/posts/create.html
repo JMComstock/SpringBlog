@@ -11,16 +11,16 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container">
-    <form action="/posts/create" method="post">
+    <form th:object="${post}" method="post">
         <h1>New Post</h1>
         <div class="form-group">
             <label for="title">Title</label>
-            <input name="title" type="text" class="form-control" id="title" placeholder="title">
+            <input  th:field="*{title}" type="text" class="form-control" id="title" placeholder="title">
             <small id="emailHelp" class="form-text text-muted">A great description of your post.</small>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+            <textarea th:field="*{description}" class="form-control" id="description" placeholder="Description"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
