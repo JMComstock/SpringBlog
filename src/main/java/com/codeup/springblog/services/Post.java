@@ -23,11 +23,6 @@ public class Post {
         this.description = description;
     }
 
-    public Post(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
     public long getId() {
         return id;
     }
