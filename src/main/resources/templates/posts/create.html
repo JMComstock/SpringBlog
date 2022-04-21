@@ -16,16 +16,15 @@
         <div class="form-group">
             <label for="title">Title</label>
             <input  th:field="*{title}" type="text" class="form-control" id="title" placeholder="title">
-            <small id="emailHelp" class="form-text text-muted">A great description of your post.</small>
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
-            <textarea th:field="*{description}" class="form-control" id="description" placeholder="Description"></textarea>
+            <label for="body">Body</label>
+            <textarea th:field="*{body}" class="form-control" id="body" placeholder="body"></textarea>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

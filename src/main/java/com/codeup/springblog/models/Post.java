@@ -1,4 +1,4 @@
-package com.codeup.springblog.services;
+package com.codeup.springblog.models;
 
 import javax.persistence.*;
 
@@ -13,14 +13,14 @@ public class Post {
     private String title;
 
     @Column(nullable = false)
-    private String description;
+    private String body;
 
     public Post () {}
 
-    public Post(long id, String title, String description) {
+    public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
-        this.description = description;
+        this.body = body;
     }
 
     public long getId() {
@@ -40,13 +40,14 @@ public class Post {
         this.title = title;
     }
 
-    public String getDescription() {
+    public String getBody() {
 
-        return description;
+        return body;
     }
 
-    public void setDescription(String description) {
+    public void setBody(String body) {
 
-        this.description = description;
+        this.body = body;
     }
+
 }
