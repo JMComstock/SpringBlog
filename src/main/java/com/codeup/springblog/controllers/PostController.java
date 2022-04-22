@@ -42,30 +42,24 @@ public class PostController {
 
     @RequestMapping(path="/posts/create", method = RequestMethod.POST)
     public String createPostView(@ModelAttribute Post post) {
-        User user = userDao.findById(1);
+        User user = userDao.findById(1L);
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
     }
 
-//    @GetMapping("/posts/{id}/edit")
-//    public String showEditForm(@PathVariable("id") long id, Model model) {
-//        Post post = postDao.getById(id);
-//        model.addAttribute("post", post);
-//        return "posts/edit";
-//    }
-//
-//    @PostMapping("/posts/{id}/edit")
-//    public String edit (@PathVariable long id,
-//                        @RequestParam(name = "title") String title,
-//                        @RequestParam(name = "body") String body,
-//                        Model model) {
-//        Post post = postDao.getById(id);
-//        post.setTitle(title);
-//        post.setBody(body);
-//        model.addAttribute("post", postDao.saveAndFlush(post));
-//        return "redirect:/posts/" + id;
-//    }
+    @GetMapping("/posts/{id}/edit")
+    public String editForm (@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.getById(id));
+        return "posts/edit";
+    }
 
+    @PostMapping("/post/{id}/edit")
+    public String editPost (@PathVariable long id, @ModelAttribute Post post) {
+        post.setId(id);
+        post.setUser(userDao.getById(1L));
+        postDao.save(post);
+        return "redirect:/posts";
+    }
 
 }
