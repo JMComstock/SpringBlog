@@ -11,11 +11,14 @@
 <body>
     <nav th:replace="partials/navbar :: navbar"></nav>
 
-    <div th:each="post : ${posts}">
-        <h1 th:text="${post.title}"></h1>
-        <p th:text="${post.body}"></p>
-        <p th:text="${post.user.email}"></p>
+    <div class="container">
+        <div th:each="post : ${posts}">
+            <h1 th:text="${post.title}"></h1>
+            <p th:text="${post.body}"></p>
+            <p>Post created by: <span th:text="${post.user.email}"></span></p>
+        </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

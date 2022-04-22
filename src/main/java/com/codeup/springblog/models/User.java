@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +25,19 @@ public class User {
 
     public User() {}
 
-    public User(long id, String username, String email, String password) {
+    public User(String username, String email, String password, List<Post> posts) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
+    }
+
+    public User(long id, String username, String email, String password, List<Post> posts) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.posts = posts;
     }
 
     public Long getId() {

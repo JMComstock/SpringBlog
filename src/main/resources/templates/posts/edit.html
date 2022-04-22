@@ -9,22 +9,21 @@
     <title>Create Post</title>
 </head>
 <body>
-
 <nav th:replace="partials/navbar :: navbar"></nav>
-
 <div class="container">
-    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-        <h1>New Post</h1>
+    <form th:object="${post}" th:method="post" th:action="${'/posts/' + post.id + '/edit'}">
+        <input type="hidden" name="id" th:value="${post.id}">
+        <h1>Edit Post</h1>
         <div class="form-group">
             <label for="title">Title</label>
-            <input  th:field="*{title}" type="text" class="form-control" id="title" placeholder="title">
+            <input  th:field="*{title}" type="text" class="form-control" id="title" placeholder="${post.title}">
         </div>
         <div class="form-group">
             <label for="body">Body</label>
-            <textarea th:field="*{body}" class="form-control" id="body" placeholder="body"></textarea>
+            <textarea th:field="*{body}" class="form-control" id="body" placeholder="${post.body}"></textarea>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit Edit</button>
     </form>
 </div>
 
