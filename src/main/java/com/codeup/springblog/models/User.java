@@ -40,6 +40,14 @@ public class User {
         this.posts = posts;
     }
 
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.email = copy.email;
+        this.password = copy.password;
+        this.posts = copy.posts;
+    }
+
     public Long getId() {
         return id;
     }

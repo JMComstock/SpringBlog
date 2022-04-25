@@ -16,6 +16,9 @@
         <div class="card-body">
             <h5 class="card-title" th:text="${post.title}"></h5>
             <p class="card-text" th:text="${post.body}"></p>
+            <p>Post created by: <span th:text="${post.user.username}"></span>
+            <br>
+            Users email: <span th:text="${post.user.email}"></span></p>
             <a th:href="@{'/posts/{id}'(id=${post.id})}"class="card-link">See this post</a>
             <br>
             <a th:href="@{'/posts/{id}/edit'(id=${post.id})}" class="card-link">Edit this post</a>
