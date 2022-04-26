@@ -20,8 +20,6 @@
             <br>
             Users email: <span th:text="${post.user.email}"></span></p>
             <a th:href="@{'/posts/{id}'(id=${post.id})}"class="card-link">See this post</a>
-            <br>
-            <a th:href="@{'/posts/{id}/edit'(id=${post.id})}" class="card-link">Edit this post</a>
         </div>
     </div>
     <hr>

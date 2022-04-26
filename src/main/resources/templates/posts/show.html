@@ -18,6 +18,12 @@
             <p>Post created by: <span th:text="${post.user.username}"></span>
                 <br>
                 Users email: <span th:text="${post.user.email}"></span></p>
+            <a th:href="@{'/posts/{id}/edit'(id=${post.id})}" class="card-link">Edit this post</a>
+
+            <form th:action="@{/posts/{id}/delete(id=${post.getId()})}" method="post">
+                <input type="hidden" name="id" th:value="${post.id}">
+                <button class="btn btn-danger">Delete this post</button>
+            </form>
         </div>
     </div>
 
