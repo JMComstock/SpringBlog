@@ -20,7 +20,7 @@ public class Post {
 
     @Column(nullable = false)
     @NotNull
-    @Size (min =5 , max = 100)
+    @Size (min =5 , max = 100, message = "The body must be at least 5 characters and up to 100 in length.")
     private String body;
 
     @ManyToOne
