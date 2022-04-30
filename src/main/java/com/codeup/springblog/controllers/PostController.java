@@ -8,7 +8,7 @@ import com.codeup.springblog.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -49,13 +49,12 @@ public class PostController {
     }
 
     @RequestMapping(path="/posts/create", method = RequestMethod.POST)
-    public String createPostView(@Valid Post post, Errors validation, Model model) {
+    public String createPostView(@Valid Post post, BindingResult bindingResult, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
-        if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("post", post);
-            return "ads/create";
+        if (bindingResult.hasErrors()) {
+
+            return "posts/create";
         }
         emailService.prepareAndSend(post, "New post Created", "Your new post has been created on the Spring Blog!");
         postDao.save(post);

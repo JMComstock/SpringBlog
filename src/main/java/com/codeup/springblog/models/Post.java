@@ -1,6 +1,7 @@
 package com.codeup.springblog.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -13,10 +14,13 @@ public class Post {
     private long id;
 
     @Column(nullable = false, length = 50)
+    @NotNull
     @Size(min = 3, message = "A title must be at least 3 characters.")
     private String title;
 
     @Column(nullable = false)
+    @NotNull
+    @Size (min =5 , max = 100)
     private String body;
 
     @ManyToOne
